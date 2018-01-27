@@ -17,10 +17,13 @@
 % Define a few styles and constants
 \tikzstyle{sensor}=[draw, fill=blue!20, text width=5em, 
     text centered, minimum height=2.5em]
-\tikzstyle{sensor2}=[draw, fill=red!20!blue!20, text width=5em, 
+\tikzstyle{sensor2}=[draw, fill=red!60!blue!20, text width=5em, 
     text centered, minimum height=2.5em]
 \tikzstyle{sensor3}=[draw, fill=green!20!blue!20, text width=5em,
     text centered, minimum height=2.5em]
+\tikzstyle{sensor4}=[draw, fill=green!70!red!30, text width=15em,
+    text centered, minimum height=0.5em, minimum width=16.5em]
+\tikzstyle{sensor5}=[]
 \tikzstyle{ann} = [draw, fill=blue!20, text width=5em, 
     text centered, minimum height=2.5em]
 \tikzstyle{naveqs} = [sensor, text width=6em, fill=red!20, 
@@ -31,10 +34,14 @@
 \begin{tikzpicture}
     \node (naveq) [naveqs] {$8085 \mu P$};
     % Note the use of \path instead of \node at ... below. 
-    \path (naveq.140)+(-\blockdist, 0) node (gyros) [sensor] {Numeric Input Pad};
-    \path (naveq.-150)+(-\blockdist,0) node (accel) [sensor] {Reset Button};
-    \path (naveq.140)+(0.1, -5) node (RAM) [sensor3] {R/W Memory};
-    \path (naveq.140)+(2.2, -5) node (ROM) [sensor3] {ROM};
+    \path (naveq.140)+(-7.5, 0) node (gyros) [sensor] {Numeric Input Pad};
+    \path (6.5, -5.5) node (power) [sensor5] {Power Supply};
+    \path (naveq.-150)+(-7.5,0) node (accel) [sensor] {Reset Button};
+    \path (naveq.140)+(-3.5, 0) node (gyros2) [sensor2] {NumPad Interfacing Logic};
+    \path (naveq.-150)+(-3.5,0) node (accel2) [sensor2] {Button Interfacing Logic};
+    \path (naveq.140)+(1.0, -4) node (ml) [sensor4] {Memory Interfacing Logic};
+    \path (naveq.140)+(0.1, -6) node (RAM) [sensor3] {R/W Memory};
+    \path (naveq.140)+(2.2, -6) node (ROM) [sensor3] {ROM};
     \path (naveq.140)+(1, 3) node (timing) [sensor2] {Timing unit};
     
     % Unfortunately we cant use the convenient \path (fromnode) -- (tonode) 
@@ -42,24 +49,30 @@
     % and clip the path at the node boundaries. We want horizontal lines, but
     % the sensor and naveq blocks aren't aligned horizontally. Instead we use
     % the line intersection syntax |- to calculate the correct coordinate
-    \path [draw, ->] (gyros) -- node [above] {Entering O/X} 
-        (naveq.west |- gyros) ;
+    \path [draw, ->] (gyros) -- node [above] {} 
+        (gyros2.west |- gyros) ;
+    \path [draw, ->] (gyros2) -- node [above] {Entering O/X} 
+        (naveq.west |- gyros2) ;
+    \path [draw, ->] (accel2) -- node [above] {Hard Reset} 
+        (naveq.west |- accel2) ;
     \path [draw, <->] (RAM) -- node [above] {} 
-        (naveq.south east -| RAM);
+        (ml.south -| RAM.north);
     \path [draw, ->] (ROM) -- node [above] {} 
-        (naveq.south west -| ROM);
+        (ml.south -| ROM.north);
+    \path [draw, ->] (ml) -- node [left] {Address and Data Lines}     (naveq.south -| ml.north);
+        (ml.south -| ROM);
     \path [draw, ->] (timing) -- node [above] {} 
         (naveq.north west -| timing);
     % We could simply have written (gyros) .. (naveq.140). However, it's
     % best to avoid hard coding coordinates
-    \path [draw, ->] (accel) -- node [above] {Hard Reset} 
-        (naveq.west |- accel);
+    \path [draw, ->] (accel) -- node [above] {} 
+        (accel2.west |- accel);
     \node (IMU) [below of=accel] {Input Devices};
-    \path (naveq.south)+(5,-2.8) node (INS) {Output Devices};
+    \path (naveq.south)+(5.4,-0.8) node (INS) {Output Devices};
     \path (naveq.south)+(-0.3,-0.4) node (INS) {};
-    \draw [->] (naveq.40) -- node [ann] {LCD Interface} + (3,3) 
+    \draw [->] (naveq.40) -- node [ann] {LCD Interface} + (3,0) 
         node[right] {   LCD Display};
-    \draw [->] (naveq.-40) -- node [ann] {LED Matrix Interface} + (3,-3) 
+    \draw [->] (naveq.-40) -- node [ann] {LED Matrix Interface} + (3,0) 
         node[right] { 3 x 3 LED Matrix};
     
     % Now it's time to draw the colored IMU and INS rectangles.
@@ -67,18 +80,26 @@
     % can use the above block coordinates to place the backgrounds   
     \begin{pgfonlayer}{background}
         % Compute a few helper coordinates
+        % Power Supply Block
+        \path (-10.3, 4.7) node (a) {};
+        \path (+7.8,-6.2) node (b) {};
+        \path[fill=black!5,rounded corners, draw=black!50, dashed]
+            (a) rectangle (b);
         \path (gyros.west |- naveq.north)+(3.4, 0.3) node (a) {};
         \path (INS.south -| naveq.east)+(+1.9,-2) node (b) {};
-        \path[fill=yellow!20,rounded corners, draw=black!50, dashed]
+        \path[fill=yellow!30,rounded corners, draw=black!50, dashed]
             (a) rectangle (b);
         \path (gyros.north west)+(-0.2,0.2) node (a) {};
         \path (IMU.south -| gyros.east)+(+0.2,-0.2) node (b) {};
-        \path[fill=blue!10,rounded corners, draw=black!50, dashed]
+        \path[fill=blue!20!red!10,rounded corners, draw=black!50, dashed]
             (a) rectangle (b);
-        \path (naveq.north east)+(2.2,2.2) node (a) {};
-        \path (naveq.south -| gyros.east)+(+11.2,-3.2) node (b) {};
-        \path[fill=blue!10,rounded corners, draw=black!50, dashed]
+        \path (naveq.north east)+(6, 0.2) node (a) {};
+        \path (naveq.south -| gyros.east)+(+11.7,-1.2) node (b) {};
+        \path[fill=pink!10,rounded corners, draw=black!50, dashed]
             (a) rectangle (b);
+        
+        
+        
     \end{pgfonlayer}
 \end{tikzpicture}
 
