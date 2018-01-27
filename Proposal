@@ -23,8 +23,8 @@ DESCIPTION:
 
 BLOCK DIAGRAM:
 
-References for block diagram: http://www.instructables.com/id/how-to-interface-LCD-16X2-to-arduino/
-
+References for block diagram: 1) LCD Display: http://www.instructables.com/id/how-to-interface-LCD-16X2-to-arduino/
+                              2) 3 x 3 LED Matrix: https://github.com/GirishJoshi/3x3-LED-Matrix-Arduino
 USER INTERFACE
 
 I/O PORTS
