@@ -43,7 +43,8 @@
     \path [draw, ->] (accel) -- node [above] {Hard Reset} 
         (naveq.west |- accel);
     \node (IMU) [below of=accel] {Input Devices};
-    \path (naveq.south)+(-0.3,-0.4) node (INS) {Minmax Algorithm based System};
+    \path (naveq.south)+(5,-2.8) node (INS) {Output Devices};
+    \path (naveq.south)+(-0.3,-0.4) node (INS) {};
     \draw [->] (naveq.40) -- node [ann] {} + (3,3) 
         node[right] {   LCD Display};
     \draw [->] (naveq.-40) -- node [ann] {} + (3,-3) 
@@ -60,6 +61,10 @@
             (a) rectangle (b);
         \path (gyros.north west)+(-0.2,0.2) node (a) {};
         \path (IMU.south -| gyros.east)+(+0.2,-0.2) node (b) {};
+        \path[fill=blue!10,rounded corners, draw=black!50, dashed]
+            (a) rectangle (b);
+        \path (naveq.north east)+(2.2,2.2) node (a) {};
+        \path (naveq.south -| gyros.east)+(+11.2,-3.2) node (b) {};
         \path[fill=blue!10,rounded corners, draw=black!50, dashed]
             (a) rectangle (b);
     \end{pgfonlayer}
