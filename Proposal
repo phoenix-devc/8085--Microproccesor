@@ -25,6 +25,7 @@ BLOCK DIAGRAM:
 
 References for block diagram: 1) LCD Display: http://www.instructables.com/id/how-to-interface-LCD-16X2-to-arduino/
                               2) 3 x 3 LED Matrix: https://github.com/GirishJoshi/3x3-LED-Matrix-Arduino
+                              3) Numeric Keypad: https://electrosome.com/interfacing-keypad-8051-microcontroller-keil-c/
 USER INTERFACE
 
 I/O PORTS
