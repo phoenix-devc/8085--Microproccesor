@@ -68,11 +68,11 @@
     \path [draw, ->] (accel) -- node [above] {} 
         (accel2.west |- accel);
     \node (IMU) [below of=accel] {Input Devices};
-    \path (naveq.south)+(5.4,-0.8) node (INS) {Output Devices};
+    \path (7.5, -1.8) node (INS) {Output Devices};
     \path (naveq.south)+(-0.3,-0.4) node (INS) {};
-    \draw [->] (naveq.40) -- node [ann] {LCD Interface} + (3,0) 
+    \draw [->] (naveq.40) -- node [ann] {LCD Interface} + (5,0) 
         node[right] {   LCD Display};
-    \draw [->] (naveq.-40) -- node [ann] {LED Matrix Interface} + (3,0) 
+    \draw [->] (naveq.-40) -- node [ann] {LED Matrix Interface} + (5,0) 
         node[right] { 3 x 3 LED Matrix};
     
     % Now it's time to draw the colored IMU and INS rectangles.
@@ -82,19 +82,19 @@
         % Compute a few helper coordinates
         % Power Supply Block
         \path (-10.3, 4.7) node (a) {};
-        \path (+7.8,-6.2) node (b) {};
+        \path (+9.2,-6.2) node (b) {};
         \path[fill=black!5,rounded corners, draw=black!50, dashed]
             (a) rectangle (b);
         \path (gyros.west |- naveq.north)+(3.4, 0.3) node (a) {};
-        \path (INS.south -| naveq.east)+(+1.9,-2) node (b) {};
+        \path (INS.south -| naveq.east)+(+3.8,-1.4) node (b) {};
         \path[fill=yellow!30,rounded corners, draw=black!50, dashed]
             (a) rectangle (b);
         \path (gyros.north west)+(-0.2,0.2) node (a) {};
         \path (IMU.south -| gyros.east)+(+0.2,-0.2) node (b) {};
         \path[fill=blue!20!red!10,rounded corners, draw=black!50, dashed]
             (a) rectangle (b);
-        \path (naveq.north east)+(6, 0.2) node (a) {};
-        \path (naveq.south -| gyros.east)+(+11.7,-1.2) node (b) {};
+        \path (6, -2) node (a) {};
+        \path (9, 2) node (b) {};
         \path[fill=pink!10,rounded corners, draw=black!50, dashed]
             (a) rectangle (b);
         
