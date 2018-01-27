@@ -17,7 +17,12 @@
 % Define a few styles and constants
 \tikzstyle{sensor}=[draw, fill=blue!20, text width=5em, 
     text centered, minimum height=2.5em]
-\tikzstyle{ann} = [above, text width=5em]
+\tikzstyle{sensor2}=[draw, fill=red!20!blue!20, text width=5em, 
+    text centered, minimum height=2.5em]
+\tikzstyle{sensor3}=[draw, fill=green!20!blue!20, text width=5em,
+    text centered, minimum height=2.5em]
+\tikzstyle{ann} = [draw, fill=blue!20, text width=5em, 
+    text centered, minimum height=2.5em]
 \tikzstyle{naveqs} = [sensor, text width=6em, fill=red!20, 
     minimum height=12em, rounded corners]
 \def\blockdist{4}
@@ -28,8 +33,9 @@
     % Note the use of \path instead of \node at ... below. 
     \path (naveq.140)+(-\blockdist, 0) node (gyros) [sensor] {Numeric Input Pad};
     \path (naveq.-150)+(-\blockdist,0) node (accel) [sensor] {Reset Button};
-    \path (naveq.140)+(0, -5) node (RAM) [sensor] {R/W Memory};
-    \path (naveq.140)+(3, -5) node (ROM) [sensor] {ROM};
+    \path (naveq.140)+(0.1, -5) node (RAM) [sensor3] {R/W Memory};
+    \path (naveq.140)+(2.2, -5) node (ROM) [sensor3] {ROM};
+    \path (naveq.140)+(1, 3) node (timing) [sensor2] {Timing unit};
     
     % Unfortunately we cant use the convenient \path (fromnode) -- (tonode) 
     % syntax here. This is because TikZ draws the path from the node centers
@@ -38,6 +44,12 @@
     % the line intersection syntax |- to calculate the correct coordinate
     \path [draw, ->] (gyros) -- node [above] {Entering O/X} 
         (naveq.west |- gyros) ;
+    \path [draw, <->] (RAM) -- node [above] {} 
+        (naveq.south east -| RAM);
+    \path [draw, ->] (ROM) -- node [above] {} 
+        (naveq.south west -| ROM);
+    \path [draw, ->] (timing) -- node [above] {} 
+        (naveq.north west -| timing);
     % We could simply have written (gyros) .. (naveq.140). However, it's
     % best to avoid hard coding coordinates
     \path [draw, ->] (accel) -- node [above] {Hard Reset} 
@@ -45,9 +57,9 @@
     \node (IMU) [below of=accel] {Input Devices};
     \path (naveq.south)+(5,-2.8) node (INS) {Output Devices};
     \path (naveq.south)+(-0.3,-0.4) node (INS) {};
-    \draw [->] (naveq.40) -- node [ann] {} + (3,3) 
+    \draw [->] (naveq.40) -- node [ann] {LCD Interface} + (3,3) 
         node[right] {   LCD Display};
-    \draw [->] (naveq.-40) -- node [ann] {} + (3,-3) 
+    \draw [->] (naveq.-40) -- node [ann] {LED Matrix Interface} + (3,-3) 
         node[right] { 3 x 3 LED Matrix};
     
     % Now it's time to draw the colored IMU and INS rectangles.
