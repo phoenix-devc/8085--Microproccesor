@@ -7,22 +7,25 @@ By: Shikhar Makhija - 155/EC/15
 
 SYNOPSIS:
 
-KEYWORDS:
+KEYWORDS: Minmax Algorithm, 8085 Microprocessor, Game Theory
 
 DATE: January 2018
 
 INTRODUCTION:
-
+This project is a blend of the soft computinf algorithm prevalent today with hardware present in the 70's.   
 
 
 MOTIVATION AND JUSTIFICATION:
 
+
 WHAT DOES IT ACHIEVE:
+
 
 DESCIPTION:
 
-BLOCK DIAGRAM:
 
+BLOCK DIAGRAM:
+Done.
 References for block diagram: 1) LCD Display: http://www.instructables.com/id/how-to-interface-LCD-16X2-to-arduino/
                               2) 3 x 3 LED Matrix: https://github.com/GirishJoshi/3x3-LED-Matrix-Arduino
                               3) Numeric Keypad: https://electrosome.com/interfacing-keypad-8051-microcontroller-keil-c/
@@ -32,5 +35,5 @@ USER INTERFACE
 I/O PORTS
 
 GANTT CHART
-
+Done.
 REFERENCES
