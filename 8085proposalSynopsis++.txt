@@ -1,0 +1,26 @@
+Synopsis
+Tic-Tac-Toe is a simple two-player game played in turns where each player places their mark on a 3x3 grid with the goal of having three 
+consecutive marks in either the horizontal, vertical or diagonal direction. The game can end in three possible states of either winning,
+losing or drawing. We aim to construct the hardware implementation of this popular game with the facillity to play against either another player or the 8085 itself.
+The objective of our project is to create an 8085 based system which algorithimically analyses the state of the game and picks the optimum move so as to ensure that 
+the computer always wins or draws. The MinMax algorithm determines the move to be played by the 8085 microprocessor. This project serves to demonstrate the decision 
+making capability of computers. We intend to take user input using a repurporsed numeric keypad and instead of placing a mark, an LED of a specific colour is lit instead.
+The state of the game will be displayed using a 3x3 grid of bicolour LEDs and a 16x2 character LCD will be present to provide textual information about the game status.
+
+Motivation 
+Tic-Tac-Toe is a game which we have all played at some point in our life and its sheer simplicity contributes to its widespread adoption, making it one of the most popular pen and paper games.
+The EC-316 course provides the perfect platform to give our beloved game a concrete form. The notion of computer intelligence is one that has always intrigued us and we aim to demonstrate with our project 
+how even a microprocessors from the 70's can be programmed to be unbeatable.
+
+Justification
+Why choose this project?
+For starters, just the rapid reusability of the board makes it great for playing tic-tac-toe. However the heart of our project lies in the usage of the MinMax algorithm
+to play against a user. This project demonstrates one of the most basic forms of artificial intelligence, a computer which is able to make decisions about which move
+to make.
+
+
+
+
+
+
+
