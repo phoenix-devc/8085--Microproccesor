@@ -1,4 +1,0 @@
-The primary objective of our project is to create a hardware implementation of the game 'Tic-Tac-Toe' with the facillity of playing against
-the 8085 microprocessor. The microprocessor will algorithmically analyse the state of the game and pick the most optimum move so as to ensure
-that it always wins or draws. We intend to use the MinMax algorithm to determine the moves to be picked by the 8085. This project intends to 
-highlight the decision making capability of microprocessors. 
