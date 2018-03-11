@@ -6,7 +6,7 @@
 ;01H -> X
 ;FFH -> 0
 ;-----------------------------------------------------------------------
-;The H-L Register pair must be set to "BOARD"
+;The H-L Register pair must be set to "BOARD" (THIS HAS BEEN DONE SO THAT IT CAN BE COMPATIBLE FOR BOARD STATES STORED ANYWHERE)
 ;The Checkwin function will evaluate the board pointed by "BOARD"
 ;using the table of winning combinations (pointed by "WINLIST"). 
 ;The table has offsets stored in running sum form.
@@ -26,7 +26,7 @@ CODE	.EQU 0000H
 ;FUNCTIONS:
 CWIN:	LXI D, WINLIST
 	MVI A, 08H;
-	DCX D; DCR may cause problem
+	DCX D; FIXED
 CLOOP:	PUSH PSW
 	XRA A
 	INX D
