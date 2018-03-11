@@ -26,7 +26,7 @@ CODE	.EQU 0000H
 ;FUNCTIONS:
 CWIN:	LXI D, WINLIST
 	MVI A, 08H;
-	DCX E; DCR may cause problem
+	DCX D; DCR may cause problem
 CLOOP:	PUSH PSW
 	XRA A
 	INX D
