@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -26445,20 +26445,18 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="R8" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-US_" device="0204/2V" package3d_urn="urn:adsk.eagle:package:23495/1"/>
 <part name="ADD_LATCH" library="74xx-eu" library_urn="urn:adsk.eagle:library:85" deviceset="74*573" device="N" package3d_urn="urn:adsk.eagle:package:2017/1" technology="HCT"/>
 <part name="SUPPLY2" library="supply2" library_urn="urn:adsk.eagle:library:372" deviceset="GND" device=""/>
-<part name="C1" library="capacitor-wima" library_urn="urn:adsk.eagle:library:116" deviceset="C" device="2,5-3" package3d_urn="urn:adsk.eagle:package:5436/1"/>
+<part name="C1" library="capacitor-wima" library_urn="urn:adsk.eagle:library:116" deviceset="C" device="2,5-3" package3d_urn="urn:adsk.eagle:package:5436/1" value="0.1u"/>
 <part name="RAM-62256P" library="memory-hitachi" deviceset="62256P" device=""/>
 <part name="ROM-58C256" library="memory-hitachi" deviceset="58C256P" device=""/>
 <part name="PORTS-82C55A1" library="micro-intel" deviceset="82C55A" device=""/>
-<part name="C6" library="resistor" deviceset="C-EU" device="050-024X044"/>
+<part name="C6" library="resistor" deviceset="C-EU" device="050-024X044" value="0.1u"/>
 <part name="LCD1" library="CEDT_JANUARY_2015_v5" deviceset="16X2LCD" device=""/>
 <part name="U$2" library="CEDT_JANUARY_2015_v5" deviceset="PRESET_LR" device=""/>
 <part name="P+9" library="supply1" deviceset="VCC" device=""/>
-<part name="SUPPLY19" library="supply2" deviceset="GND" device=""/>
-<part name="P+10" library="supply1" deviceset="VCC" device=""/>
 <part name="SUPPLY4" library="supply2" deviceset="GND" device=""/>
 <part name="P+15" library="supply1" deviceset="VCC" device=""/>
 <part name="SUPPLY5" library="supply2" deviceset="GND" device=""/>
-<part name="C17" library="rcl" deviceset="C-EU" device="025-024X044"/>
+<part name="C17" library="rcl" deviceset="C-EU" device="025-024X044" value="0.1u"/>
 <part name="PORTS-82C55A2" library="micro-intel" deviceset="82C55A" device=""/>
 <part name="LEDA" library="led" deviceset="TLUV5300" device=""/>
 <part name="LEDB" library="led" deviceset="TLUV5300" device=""/>
@@ -26500,30 +26498,31 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <attribute name="ADD_LATCH" value=""/>
 </part>
 <part name="Q2" library="CEDT" deviceset="CRYSTAL" device="HC49US"/>
-<part name="C3" library="rcl" deviceset="C-EU" device="025-024X044"/>
+<part name="C3" library="rcl" deviceset="C-EU" device="025-024X044" value="0.1u"/>
 <part name="SWITCH" library="CEDTv69" deviceset="10-XX" device=""/>
-<part name="C18" library="capacitor-wima" deviceset="C" device="2,5-3"/>
+<part name="C18" library="capacitor-wima" deviceset="C" device="2,5-3" value="0.1u"/>
 <part name="R11" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-US_" device="0204/2V" package3d_urn="urn:adsk.eagle:package:23495/1"/>
 <part name="LED@SOD" library="led" deviceset="LED" device="3MM"/>
 <part name="SUPPLY17" library="supply2" deviceset="GND" device=""/>
 <part name="R12" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-US_" device="0204/2V" package3d_urn="urn:adsk.eagle:package:23495/1"/>
-<part name="C5" library="rcl" deviceset="C-EU" device="025-024X044"/>
-<part name="C7" library="rcl" deviceset="C-EU" device="025-024X044"/>
-<part name="C8" library="rcl" deviceset="C-EU" device="025-024X044"/>
-<part name="C9" library="rcl" deviceset="C-EU" device="025-024X044"/>
-<part name="C10" library="rcl" deviceset="C-EU" device="025-024X044"/>
-<part name="C11" library="rcl" deviceset="C-EU" device="025-024X044"/>
+<part name="C5" library="rcl" deviceset="C-EU" device="025-024X044" value="0.1u"/>
+<part name="C7" library="rcl" deviceset="C-EU" device="025-024X044" value="0.1u"/>
+<part name="C8" library="rcl" deviceset="C-EU" device="025-024X044" value="0.1u"/>
+<part name="C9" library="rcl" deviceset="C-EU" device="025-024X044" value="0.1u"/>
+<part name="C10" library="rcl" deviceset="C-EU" device="025-024X044" value="0.1u"/>
+<part name="C11" library="rcl" deviceset="C-EU" device="025-024X044" value="0.1u"/>
 <part name="SUPPLY3" library="supply2" library_urn="urn:adsk.eagle:library:372" deviceset="GND" device=""/>
 <part name="SUPPLY6" library="supply2" library_urn="urn:adsk.eagle:library:372" deviceset="GND" device=""/>
 <part name="SUPPLY8" library="supply2" library_urn="urn:adsk.eagle:library:372" deviceset="GND" device=""/>
-<part name="C12" library="rcl" deviceset="C-EU" device="025-024X044"/>
-<part name="C13" library="rcl" deviceset="C-EU" device="025-024X044"/>
-<part name="C14" library="rcl" deviceset="C-EU" device="025-024X044"/>
+<part name="C12" library="rcl" deviceset="C-EU" device="025-024X044" value="0.1u"/>
+<part name="C13" library="rcl" deviceset="C-EU" device="025-024X044" value="0.1u"/>
+<part name="C14" library="rcl" deviceset="C-EU" device="025-024X044" value="0.1u"/>
 <part name="SV1" library="con-lstb" library_urn="urn:adsk.eagle:library:162" deviceset="MA08-1" device="" package3d_urn="urn:adsk.eagle:package:8343/1"/>
 <part name="SUPPLY9" library="supply2" deviceset="GND" device=""/>
 <part name="D1" library="SparkFun-LED" deviceset="LED-RGB-CC-THRU" device="CLEAR"/>
 <part name="R13" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-US_" device="0204/2V" package3d_urn="urn:adsk.eagle:package:23495/1"/>
 <part name="SUPPLY10" library="SparkFun-Aesthetics" deviceset="VCC" device=""/>
+<part name="SUPPLY12" library="supply2" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -26559,10 +26558,8 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <instance part="C6" gate="G$1" x="198.12" y="-45.72"/>
 <instance part="LCD1" gate="G$1" x="302.26" y="-12.7" rot="MR90"/>
 <instance part="U$2" gate="G$1" x="266.7" y="6.35"/>
-<instance part="P+9" gate="VCC" x="256.54" y="6.35" rot="R90"/>
-<instance part="SUPPLY19" gate="GND" x="276.86" y="6.35" rot="R90"/>
-<instance part="P+10" gate="VCC" x="280.67" y="2.54" rot="R90"/>
-<instance part="SUPPLY4" gate="GND" x="284.48" y="15.24" rot="R270"/>
+<instance part="P+9" gate="VCC" x="276.86" y="22.86"/>
+<instance part="SUPPLY4" gate="GND" x="292.1" y="12.7"/>
 <instance part="P+15" gate="VCC" x="281.94" y="-30.48" rot="R90"/>
 <instance part="SUPPLY5" gate="GND" x="285.75" y="-39.37"/>
 <instance part="C17" gate="G$1" x="284.48" y="5.08" rot="R180"/>
@@ -26644,6 +26641,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <instance part="D1" gate="G$1" x="190.5" y="27.94"/>
 <instance part="R13" gate="G$1" x="208.534" y="27.94" rot="R180"/>
 <instance part="SUPPLY10" gate="G$1" x="121.92" y="-10.16"/>
+<instance part="SUPPLY12" gate="GND" x="274.32" y="2.54"/>
 </instances>
 <busses>
 </busses>
@@ -26687,20 +26685,6 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <pinref part="C3" gate="G$1" pin="2"/>
 <wire x1="-35.56" y1="27.94" x2="-48.26" y2="27.94" width="0.1524" layer="91"/>
 <junction x="-35.56" y="27.94"/>
-</segment>
-<segment>
-<pinref part="U$2" gate="G$1" pin="2"/>
-<pinref part="SUPPLY19" gate="GND" pin="GND"/>
-</segment>
-<segment>
-<pinref part="SUPPLY4" gate="GND" pin="GND"/>
-<pinref part="LCD1" gate="G$1" pin="GND"/>
-<wire x1="287.02" y1="15.24" x2="287.02" y2="11.43" width="0.1524" layer="91"/>
-<pinref part="C17" gate="G$1" pin="2"/>
-<wire x1="287.02" y1="11.43" x2="287.02" y2="5.08" width="0.1524" layer="91"/>
-<wire x1="284.48" y1="10.16" x2="284.48" y2="11.43" width="0.1524" layer="91"/>
-<wire x1="284.48" y1="11.43" x2="287.02" y2="11.43" width="0.1524" layer="91"/>
-<junction x="287.02" y="11.43"/>
 </segment>
 <segment>
 <pinref part="SUPPLY5" gate="GND" pin="GND"/>
@@ -26871,6 +26855,21 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <pinref part="C11" gate="G$1" pin="2"/>
 <pinref part="SUPPLY8" gate="GND" pin="GND"/>
 </segment>
+<segment>
+<pinref part="U$2" gate="G$1" pin="2"/>
+<wire x1="274.32" y1="6.35" x2="274.32" y2="5.08" width="0.1524" layer="91"/>
+<pinref part="SUPPLY12" gate="GND" pin="GND"/>
+</segment>
+<segment>
+<pinref part="LCD1" gate="G$1" pin="GND"/>
+<wire x1="287.02" y1="15.24" x2="287.02" y2="10.16" width="0.1524" layer="91"/>
+<pinref part="SUPPLY4" gate="GND" pin="GND"/>
+<wire x1="287.02" y1="10.16" x2="287.02" y2="5.08" width="0.1524" layer="91"/>
+<wire x1="287.02" y1="15.24" x2="292.1" y2="15.24" width="0.1524" layer="91"/>
+<pinref part="C17" gate="G$1" pin="2"/>
+<wire x1="284.48" y1="10.16" x2="287.02" y2="10.16" width="0.1524" layer="91"/>
+<junction x="287.02" y="10.16"/>
+</segment>
 </net>
 <net name="N$7" class="0">
 <segment>
@@ -26900,18 +26899,6 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <pinref part="R11" gate="G$1" pin="2"/>
 <wire x1="-81.28" y1="40.64" x2="-81.28" y2="78.74" width="0.1524" layer="91"/>
 <wire x1="-81.28" y1="78.74" x2="-76.2" y2="78.74" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="U$2" gate="G$1" pin="1"/>
-<pinref part="P+9" gate="VCC" pin="VCC"/>
-</segment>
-<segment>
-<pinref part="LCD1" gate="G$1" pin="V+"/>
-<pinref part="P+10" gate="VCC" pin="VCC"/>
-<wire x1="283.21" y1="2.54" x2="284.48" y2="2.54" width="0.1524" layer="91"/>
-<pinref part="C17" gate="G$1" pin="1"/>
-<wire x1="284.48" y1="2.54" x2="287.02" y2="2.54" width="0.1524" layer="91"/>
-<junction x="284.48" y="2.54"/>
 </segment>
 <segment>
 <pinref part="P+15" gate="VCC" pin="VCC"/>
@@ -27015,6 +27002,21 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <wire x1="119.38" y1="-10.16" x2="121.92" y2="-10.16" width="0.1524" layer="91"/>
 <pinref part="SUPPLY10" gate="G$1" pin="VCC"/>
 <junction x="121.92" y="-10.16"/>
+</segment>
+<segment>
+<pinref part="LCD1" gate="G$1" pin="V+"/>
+<wire x1="283.21" y1="2.54" x2="284.48" y2="2.54" width="0.1524" layer="91"/>
+<pinref part="C17" gate="G$1" pin="1"/>
+<wire x1="284.48" y1="2.54" x2="287.02" y2="2.54" width="0.1524" layer="91"/>
+<junction x="284.48" y="2.54"/>
+<wire x1="284.48" y1="2.54" x2="276.86" y2="2.54" width="0.1524" layer="91"/>
+<wire x1="276.86" y1="2.54" x2="276.86" y2="15.24" width="0.1524" layer="91"/>
+<pinref part="P+9" gate="VCC" pin="VCC"/>
+<pinref part="U$2" gate="G$1" pin="1"/>
+<wire x1="276.86" y1="15.24" x2="276.86" y2="20.32" width="0.1524" layer="91"/>
+<wire x1="259.08" y1="6.35" x2="259.08" y2="15.24" width="0.1524" layer="91"/>
+<wire x1="259.08" y1="15.24" x2="276.86" y2="15.24" width="0.1524" layer="91"/>
+<junction x="276.86" y="15.24"/>
 </segment>
 </net>
 <net name="N$1" class="0">
