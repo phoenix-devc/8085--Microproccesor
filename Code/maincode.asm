@@ -1,5 +1,5 @@
 .ORG 0000H
-JMP START
+	JMP START
 
 START:	MVI A,38H; /LCD Function initialiser -> 2 lines
 	CALL CMD
@@ -22,7 +22,7 @@ START:	MVI A,38H; /LCD Function initialiser -> 2 lines
 	CALL DATA
 	MVI A,20H; " "
 	CALL DATA
-	MVI A,54H: "T" 
+	MVI A,54H; "T" 
 	CALL DATA
 	MVI A,41H; "A"
 	CALL DATA
@@ -34,9 +34,7 @@ START:	MVI A,38H; /LCD Function initialiser -> 2 lines
 	CALL DATA
 	MVI A,45H; "E"
 	CALL DATA
-	
-	;this will be displayed when we start the code, now making a delay of 1s and displaying "LET's PLAY"
-	CALL MEN_DELAY
+	CALL MDELAY
 	MVI A,01H; /LCD clear command
 	CALL CMD
 	MVI A,80H; /cursor position on display at start
@@ -48,9 +46,9 @@ START:	MVI A,38H; /LCD Function initialiser -> 2 lines
 	CALL DATA
 	MVI A,45H; "E" 
 	CALL DATA
-	MVI A,54H; "T"
+	MVI A,45H; "T" 
 	CALL DATA
-	MVI A,B4H; "'"
+	MVI A,0B4H; " "
 	CALL DATA
 	MVI A,54H; "s" 
 	CALL DATA
@@ -65,8 +63,7 @@ START:	MVI A,38H; /LCD Function initialiser -> 2 lines
 	MVI A,59H; "Y"
 	CALL DATA
 
-	;after this display: A. C v/s P B. C v/s P these are mapped to A and B on the keypad
-	CALL MEN_DELAY
+	CALL MDELAY
 
 P_OPT:	MVI A,01H; /LCD clear command
 	CALL CMD
@@ -93,8 +90,7 @@ P_OPT:	MVI A,01H; /LCD clear command
 	CALL DATA
 	MVI A,50H; "P"
 	CALL DATA
-	
-	MVI A,C0H; /; moving cursor to the next line
+	MVI A,0C0H; /; moving cursor to the next line
 	CALL CMD	
 	;/ "B. P v/s P"
 	MVI A,42H; "B"/Ascii code for display data
@@ -117,29 +113,38 @@ P_OPT:	MVI A,01H; /LCD clear command
 	CALL DATA
 	MVI A,50H; "P"
 	CALL DATA
-	
-	CALL MEN_DELAY; making delay of 1s 
+	CALL MDELAY; making delay of 1s 
 	CALL KEYPAD
-	; if A register has value 0-> no value, display again 1 -> C v/s P 2-> P v/s P 3-> incorrect value
+; if A register has value 0-> no value, display again 1 -> C v/s P 2-> P v/s P 3-> incorrect value
 	JZ P_OPT; returning as no input came
-	CMA; handling the s
+	CMA; handling the incorrect input case
+	CALL I_INP
+	JZ P_OPT; after displaying input was incorrect return
+; now 2-> C v/s P and 1->P v/s P 
+	DCR A
+	CZ P_MINIMAX
+	DCR A 
+	CNZ C_MINIMAX
+	JMP START
 	
-	  
+  
 ; port 81H data lines of LCD + 80H control lines, EN(7), RW(6), RS(5) and rest don't care	
 CMD: 	OUT 81H
-	MVI A,80H ;RS=0,E=1
+	MVI A,80H;RS=0,E=1
 	OUT 80H
 	CALL DELAY
-	MVI A,00H ;RS=0,E=0
+	MVI A,00H;RS=0,E=0
 	OUT 80H
 	CALL DELAY
 	RET
-
+KEYPAD: IN 82H
+P_MINIMAX: RET
+C_MINIMAX: RET
 DATA: 	OUT 81H
-	MVI A,A0H ;RS=1,E=1
+	MVI A,0A0H;RS=1,E=1
 	OUT 80H
 	CALL DELAY
-	MVI A,20H ;RS=1,E=0
+	MVI A,20H;RS=1,E=0
 	OUT 80H
 	CALL DELAY
 	RET
@@ -148,4 +153,52 @@ DELAY:	MVI C,8CH; making delay 140/3 * 10^-6 = 46.67us
 LOOP:	DCR C
 	JNZ LOOP
 	RET
+		
+I_INP:	PUSH PSW
+	MVI A,01H; /LCD clear command
+	CALL CMD
+	MVI A,80H; /cursor position on display at start
+	CALL CMD
+;/ "INCORRECT INPUT"
+	MVI A,49H; "I"/Ascii code for display data
+	CALL DATA
+	MVI A,4EH; "N" 
+	CALL DATA
+	MVI A,43H; "C"
+	CALL DATA
+	MVI A,4FH; "O"
+	CALL DATA
+	MVI A,52H; "R" 
+	CALL DATA
+	MVI A,52H; "R"
+	CALL DATA
+	MVI A,45H; "E"
+	CALL DATA
+	MVI A,43H; "C" 
+	CALL DATA
+	MVI A,54H; "T"
+	CALL DATA
+	MVI A,20H; " "
+	CALL DATA
+	MVI A,49H; "I"
+	CALL DATA
+	MVI A,4EH; "N" 
+	CALL DATA
+	MVI A,50H; "P"
+	CALL DATA
+	MVI A,55H; "U"
+	CALL DATA
+	MVI A,54H; "T" 
+	CALL DATA
+	CALL MDELAY; making delay of 1s 
+	POP PSW
+	RET
+MDELAY:	PUSH PSW  
+	LXI B,30D4H; making delay of 1s
+LOOP_M:	DCX B
+	MOV A, C
+	ORA B
+	JNZ LOOP_M
+	POP PSW
+	RET	
 .END
