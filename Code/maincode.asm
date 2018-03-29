@@ -67,7 +67,8 @@ START:	MVI A,38H; /LCD Function initialiser -> 2 lines
 
 	;after this display: A. C v/s P B. C v/s P these are mapped to A and B on the keypad
 	CALL MEN_DELAY
-	MVI A,01H; /LCD clear command
+
+P_OPT:	MVI A,01H; /LCD clear command
 	CALL CMD
 	MVI A,80H; /cursor position on display at start
 	CALL CMD
@@ -95,7 +96,7 @@ START:	MVI A,38H; /LCD Function initialiser -> 2 lines
 	
 	MVI A,C0H; /; moving cursor to the next line
 	CALL CMD	
-	;/ "B. C v/s P"
+	;/ "B. P v/s P"
 	MVI A,42H; "B"/Ascii code for display data
 	CALL DATA
 	MVI A,2EH; "." 
@@ -117,6 +118,13 @@ START:	MVI A,38H; /LCD Function initialiser -> 2 lines
 	MVI A,50H; "P"
 	CALL DATA
 	
+	CALL MEN_DELAY; making delay of 1s 
+	CALL KEYPAD
+	; if A register has value 0-> no value, display again 1 -> C v/s P 2-> P v/s P 3-> incorrect value
+	JZ P_OPT; returning as no input came
+	CMA; handling the s
+	
+	  
 ; port 81H data lines of LCD + 80H control lines, EN(7), RW(6), RS(5) and rest don't care	
 CMD: 	OUT 81H
 	MVI A,80H ;RS=0,E=1
