@@ -1,5 +1,6 @@
 // This is a one second delay subroutine that provides delay according to the register B
-
+//Where are the values for D,?
+//You pushed H but never popped it. Function won't return.
 DELAY:	   PUSH D
 	   PUSH H
 	   PUSH PSW
